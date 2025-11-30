@@ -1,12 +1,12 @@
 # Encode Words
 
-An Anki add-on that boosts vocab recall through pre-review encoding.
+An Anki add-on that boosts vocab retention via a one-time initial encoding step.
 
 _[🔗 View on AnkiWeb](https://ankiweb.net/shared/info/1199836940)_
 
-Anki was originally designed for reviewing information that has already been studied, with its strength lying in spaced repetition rather than initial learning. However, it is commonly used by language learners who rely on large prebuilt vocabulary decks containing thousands of words they have never encountered before. In these situations, the crucial initial encoding phase is missing, and Anki’s learning steps are not sufficient to form a strong initial memory trace for entirely new vocabulary.
+Anki was originally designed for reviewing information that has already been learned, with its strength lying in spaced repetition rather than initial exposure. But many language learners rely on prebuilt vocabulary decks containing words they have never seen before. In these cases, Anki's learning steps often fail to create a strong initial memory trace, leading to weak retention, frequent lapses, and demotivating review sessions.
 
-This add-on fills that gap by providing an initial encoding process in the form of a guided routine (around 60 seconds per word). The routine strengthens the core meaning (semantic encoding), deepens memory through imagery and associations (elaborative encoding), and reinforces the written form through motor practice (form encoding). A strong initial memory trace makes later reviews more efficient, more stable, and far less likely to lapse.
+This add-on fills that gap by providing a **one-time encoding routine for new vocabulary** before a card enters the review queue. The routine takes about 60 seconds per word and applies several scientifically supported encoding techniques to create a deep memory trace. Strong initial encoding results in faster reviews that are far less prone to lapses, and increases the number of new words that can be learned per day.
 
 ## Instructions
 
@@ -24,22 +24,3 @@ This add-on fills that gap by providing an initial encoding process in the form 
 
 5. Press the "Start" button
    The encoding session will begin.
-
-## Encoding Steps
-
-### Step 1: Semantic Encoding **(20 seconds)**
-
-1. Read the meaning, and read and listen to the word audio.
-2. Read the example sentence translation, and read and listen to the example sentence.
-3. Say the example sentence aloud.
-4. Say the word aloud 5-10 times while mixing in the meaning, and reflect on the meaning while speaking.
-
-### Step 2: Elaborative Encoding **(25 seconds)**
-
-1. Read and listen to the word and try to recall the meaning while saying the word aloud. Read and listen to the example sentence if it helps. If unable to recall the meaning after around 5 seconds of thinking, just move on to the next step.
-2. Create a vivid mental image related to the word, then say aloud 2–3 short phrases (2–4 words each) that use the word to describe elements of the mental image. Keep the phrases simple, and avoid long or complex sentences.
-
-### Step 3: Form Encoding **(15 seconds)**
-
-1. Read the meaning and try to recall the word, saying it aloud. Read the example sentence translation if it helps. If unable to recall the word after around 5 seconds of thinking, just move on to the next step.
-2. Look at the word for 2–3 seconds to internalize the visual form, then type the word in romaji, kana, or kanji while thinking about its meaning, saying the word aloud.

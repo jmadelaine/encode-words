@@ -1,0 +1,144 @@
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+ruby rt {
+  font-size: 0.5em;
+}
+
+button,
+button:hover,
+button:active {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+}
+
+input[type="text"] {
+  width: 300px;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.left-100pc {
+  left: 100%;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.gap-4 {
+  gap: 0.25rem;
+}
+
+.gap-8 {
+  gap: 0.5rem;
+}
+
+.gap-16 {
+  gap: 1rem;
+}
+
+.gap-32 {
+  gap: 2rem;
+}
+
+.opacity-38 {
+  opacity: 0.375;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-size-md {
+  font-size: 1rem;
+}
+
+.text-size-ml {
+  font-size: 1.25rem;
+}
+
+.text-size-lg {
+  font-size: 1.5rem;
+}
+
+.pt-16 {
+  padding-top: 1rem;
+}
+
+.pl-16 {
+  padding-left: 1rem;
+}
+
+.audio-button {
+  width: 3rem;
+  height: 3rem;
+  opacity: 0.25;
+}
+
+.audio-button:hover {
+  opacity: 0.375;
+}
+
+.audio-button:active {
+  opacity: 0.75;
+}
+
+.text-max-width {
+  max-width: 512px;
+}
