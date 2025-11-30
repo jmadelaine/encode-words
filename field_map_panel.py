@@ -1,12 +1,9 @@
+from .utils import ADDON_ID, FieldKey
 from aqt import mw
-from aqt.qt import QVBoxLayout, QWidget, QGroupBox, QFormLayout, QComboBox
-from .utils import ADDON_DIR, ADDON_NAME, FieldKey
+from aqt.qt import QComboBox, QFormLayout, QGroupBox, QVBoxLayout, QWidget
 from functools import partial
-import json, os
 from typing import Callable
 
-
-FIELD_MAP_CONFIG_PATH = os.path.join(ADDON_DIR, "field-map.json")
 
 FIELD_KEYS: list[FieldKey] = list(FieldKey)
 
@@ -21,49 +18,45 @@ FIELD_LABELS: dict[FieldKey, str] = {
 
 
 def load_field_mappings() -> dict[str, dict[FieldKey, str]]:
-    if not os.path.exists(FIELD_MAP_CONFIG_PATH):
-        return {}
+    config = mw.addonManager.getConfig(ADDON_ID) or {}
+    field_map_raw = config.get("fieldMap", {})
 
-    try:
-        with open(FIELD_MAP_CONFIG_PATH, "r", encoding="utf-8") as f:
-            raw: dict[str, dict[str, str]] = json.load(f)
+    parsed: dict[str, dict[FieldKey, str]] = {}
 
-        parsed: dict[str, dict[FieldKey, str]] = {}
+    for note_type_id, inner_map in field_map_raw.items():
+        converted: dict[FieldKey, str] = {}
 
-        for note_type_id, inner_map in raw.items():
-            converted: dict[FieldKey, str] = {}
+        for key_str, value in inner_map.items():
+            try:
+                field_key = FieldKey(key_str)
+            except ValueError:
+                # Skip unknown FieldKey strings gracefully
+                continue
 
-            for key_str, value in inner_map.items():
-                try:
-                    field_key = FieldKey(key_str)
-                except ValueError:
-                    # If the JSON had a key that is no longer valid,
-                    # skip it gracefully.
-                    continue
+            converted[field_key] = value
 
-                converted[field_key] = value
+        parsed[note_type_id] = converted
 
-            parsed[note_type_id] = converted
-
-        return parsed
-
-    except Exception as e:
-        print(f"[{ADDON_NAME}] failed to load field mappings: {e}")
-        return {}
+    return parsed
 
 
 def save_field_mappings(mappings: dict[str, dict[FieldKey, str]]):
-    os.makedirs(os.path.dirname(FIELD_MAP_CONFIG_PATH), exist_ok=True)
-
-    # Convert FieldKey → its .value
+    # Convert FieldKey → str
     serializable: dict[str, dict[str, str]] = {}
+
     for note_type_id, inner_map in mappings.items():
         serializable[note_type_id] = {
             field_key.value: value for field_key, value in inner_map.items()
         }
 
-    with open(FIELD_MAP_CONFIG_PATH, "w", encoding="utf-8") as f:
-        json.dump(serializable, f, ensure_ascii=False, indent=2)
+    # Load existing config so we don't clobber other settings
+    config = mw.addonManager.getConfig(ADDON_ID) or {}
+
+    # Update just the fieldMap key
+    config["fieldMap"] = serializable
+
+    # Write back to Anki
+    mw.addonManager.writeConfig(ADDON_ID, config)
 
 
 class FieldMapPanel(QWidget):

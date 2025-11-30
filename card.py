@@ -1,17 +1,17 @@
 from .utils import CardType, FieldKey, furigana_to_html
 from aqt import mw, sound
 from aqt.qt import (
-    Qt,
     QHBoxLayout,
-    QLabel,
     QPushButton,
     QSizePolicy,
+    Qt,
     QVBoxLayout,
     QWidget,
 )
 from .utils import ADDON_DIR
 from aqt.webview import AnkiWebView
 import os, re
+
 
 CSS_PATH = os.path.join(ADDON_DIR, "styles.css")
 

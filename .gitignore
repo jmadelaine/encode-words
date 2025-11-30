@@ -28,4 +28,4 @@ dist/
 *.log
 *.tmp
 
-field-map.json
+meta.json

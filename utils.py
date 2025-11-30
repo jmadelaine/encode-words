@@ -1,3 +1,4 @@
+from aqt import mw
 from enum import Enum
 import os, re
 
@@ -5,6 +6,8 @@ import os, re
 ADDON_NAME = "Encode Words"
 
 ADDON_DIR = os.path.dirname(__file__)
+
+ADDON_ID = mw.addonManager.addonFromModule(__name__)
 
 
 class FieldKey(Enum):

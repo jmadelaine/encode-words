@@ -3,8 +3,15 @@ from .field_map_panel import FieldMapPanel
 from .utils import ADDON_NAME, FieldKey
 from .utils import CardType, FieldKey
 from aqt import mw
-from aqt.qt import QDialog, QLabel, QPushButton, QScrollArea, QVBoxLayout
-from aqt.qt import QProgressBar
+from aqt.qt import (
+    QDialog,
+    QLabel,
+    QProgressBar,
+    QPushButton,
+    QScrollArea,
+    Qt,
+    QVBoxLayout,
+)
 
 
 CARD_TYPES = [
@@ -92,7 +99,10 @@ class Dialog(QDialog):
     def show_completion_screen(self):
         self.clear_layout()
 
-        label = QLabel("All cards completed.\nGreat job!", self)
+        label = QLabel("Encoding finished!", self)
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        label.setStyleSheet("font-size: 24pt;")
+
         close_btn = QPushButton("Close", self)
         close_btn.clicked.connect(self.accept)
 
