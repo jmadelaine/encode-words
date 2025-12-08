@@ -81,8 +81,10 @@ class BaseCard(QWidget):
             self.on_next_button()
 
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key.Key_Space:
+        if event.key() in (Qt.Key.Key_Space, Qt.Key.Key_Right):
             self.on_next_button()
+        elif event.key() == Qt.Key.Key_Left:
+            self.on_previous_button()
         else:
             super().keyPressEvent(event)
 
@@ -124,10 +126,12 @@ class BaseCard(QWidget):
         self.web.stdHtml(html, context=mw)
 
     def on_next_button(self):
-        self.on_next()
+        if self.on_next:
+            self.on_next()
 
     def on_previous_button(self):
-        self.on_previous()
+        if self.on_previous:
+            self.on_previous()
 
 
 class SemanticMeaningCard(BaseCard):
